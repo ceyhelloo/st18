@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>background-origin</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        margin: 50px;
+      }
+
+      .box {
+        height: 300px;
+        border: 10px dashed rgba(255, 102, 0, 0.5);
+        background-color: #ff3;
+        font-size: 2em;
+        text-align: left;
+        color: #f0f;
+        padding: 50px;
+        margin-bottom: 20px;
+
+        background-image: url(images/frame.png);
+        background-repeat: no-repeat;
+      }
+    /* background-position: 을 지정하지 않고 (0,0)
+    background-origin은 이미지가 어느부터 기준
+    */
+      .box1 {
+        width: 500px;
+        background-origin: padding-box;
+      }
+      .box2 {
+        width: 80%;
+        background-origin: border-box;
+      }
+      .box3 {
+        width: 10em;
+      }
+        
+      .box4 {
+        width: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- .container-wrap>.box.box$*3>{box$} -->
+    <div class="container-wrap">
+      <div class="box box1">box1 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati, provident quasi pariatur velit ea necessitatibus minima voluptates veniam voluptatibus ratione!</div>
+      <div class="box box2">box2 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis porro dicta doloribus cum asperiores nisi laboriosam at quam unde ea?</div>
+      <div class="box box3">box3 Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic dolor unde enim ipsum suscipit perferendis numquam laborum autem eos in?</div>
+      <div class="box box4">box4 Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure placeat quae quisquam ea eligendi ipsum quaerat nemo modi voluptas maiores.</div>
+    </div>
+  </body>
+</html>
