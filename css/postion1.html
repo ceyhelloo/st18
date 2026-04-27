@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>position1</title>
+  <style>
+    *{margin: 0; padding: 0;}
+    .wrap{
+      width: 85%;
+      margin: 0 auto;
+      background-color: #ccc;
+      padding: 30px;
+      border: 10px dashed #999;
+    }
+
+  .parent{}
+  .parent:ntn-child(1){
+    background-color: #f86;
+  }
+  .parent:ntn-child(2){
+    background-color: #6f8;
+  }
+  .parent:ntn-child(3){
+    background-color: #86f;
+  }
+  .parent:ntn-child(4){
+    background-color: #cf6;
+  }
+  .parent:ntn-child(5){
+    background-color: #c8f;
+  }
+  </style>
+
+  
+</head>
+<body>
+  <!-- .parent*5>child*2>.box>{box$} -->
+  <div class="parent">
+    <child>
+      <div class="box">box1</div>
+    </child>
+    <child>
+      <div class="box">box2</div>
+    </child>
+  </div>
+  <div class="parent">
+    <child>
+      <div class="box">box1</div>
+    </child>
+    <child>
+      <div class="box">box2</div>
+    </child>
+  </div>
+  <div class="parent">
+    <child>
+      <div class="box">box1</div>
+    </child>
+    <child>
+      <div class="box">box2</div>
+    </child>
+  </div>
+  <div class="parent">
+    <child>
+      <div class="box">box1</div>
+    </child>
+    <child>
+      <div class="box">box2</div>
+    </child>
+  </div>
+  <div class="parent">
+    <child>
+      <div class="box">box1</div>
+    </child>
+    <child>
+      <div class="box">box2</div>
+    </child>
+  </div>
+</body>
+</html>
