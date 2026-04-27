@@ -6,7 +6,7 @@
   <title>가상클래스 hover</title>
   <style>
     *{margin: 0; padding: 0;}
-    .produc, .product>div{
+    .product, .product>div{
       box-sizing: border-box;
     }
     .product{
@@ -19,10 +19,27 @@
     .product .thumb{
       background-color: #f68;
       min-height: 200px;
+      margin-bottom: 30px;
     }
     .product .desc{
       background-color: #68f;
     }
+    .product:hover .thumb{
+      box-shadow: 0px 0px 20px rgba(102,102,102,1);
+    }
+    
+    /* 가상클래스는 웹에서 자주 발생하는  상태를 선택자
+    :hover 마우스를 어떤 요소위에 올려둔 상태 */
+    /* 마우슬 상품설명이나, 상품이미지에 위치시키면 상품이미지에 그림자 표시
+    마우스를 요소에 위치시키면 :hover
+      요소->상품이미지.thumb, 상품설명.desc
+      요소->.thumb, .desc==>.product 
+    동작
+      상품이미지에 그림자 표시
+      상품이미지.thumb
+      그림자 표시 box-shadow
+      */
+    .pr
   </style>
 </head>
 <body>
@@ -31,12 +48,10 @@
   <li class="product">
     <div class="thumb">이미지</div>
     <div class="desc">상품설명</div>
-    <desc></desc>
   </li>
   <li class="product">
     <div class="thumb">이미지</div>
     <div class="desc">상품설명</div>
-    <desc></desc>
   </li>
  </ul>
 </body>
