@@ -41,7 +41,7 @@
     /* 
     1. 블록레벨 logo  gnb-wrap util m-nav-btn 한줄로 표시
     */
-     header .logo,
+    header .logo,
     header .gnb-wrap{
       float:left;
     }
@@ -54,6 +54,7 @@
      header .gnb-wrap{
       background-color: #cfc;
       margin-left:50px;
+      display: block;
      }
      header .gnb-wrap ul.gnb{}
      /* 블록레벨인 li를 한줄 */
@@ -78,14 +79,26 @@
       header .m-nav-btn{
         display: none;
       }
+      @media (max-width:1025px){
+
+      }
+      
+      @media (max-width:1024px){
+        .pc-only{
+          display: none!important;
+        }
+        .mobile-only-block{
+          display: block;
+        }
+      }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
       <div class="inner">
-        <h1 class="logo">CHOI</h1>
-        <nav class="gnb-wrap">
+        <h1 class="logo">GEODAERO</h1>
+        <nav class="gnb-wrap pc-only">
           <ul class="gnb">
             <!-- li*5>a>{menu$} -->
             <li><a href="">menu1</a></li>
@@ -100,8 +113,9 @@
           <a href="">상단기능메뉴1</a><a href="">상단기능메뉴2</a><a href="">상단기능메뉴3</a>
         </div>
         <!--//.util -->
-        <div class="m-nav-btn">
-          <img src="images/menu.png" alt="모바일 사이드 메뉴 펼치기">
+        <!-- div.m-nav-btn .mobile-only -->
+        <div class="m-nav-btn .mobile-only">
+          <img src="menu.png" alt="모바일 사이드 메뉴 펼치기">
         </div>
       </div>
       <!--//.inner -->
