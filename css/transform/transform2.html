@@ -3,27 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>transform2</title>
+  <title>transform2 </title>
   <style>
-    *{margin: 0; padding: 0;}
+    *{margin:0; padding:0;}
     .wrap{
-      width: 80%; margin: 50px;
+      width:80%; margin: 50px;
       background-color: beige;
     }
-    /* 너비는 부모로부터, 높이는 자식으로 부터가 normal */
+    /* 
+    float가 지정된 요소가 일반흐름에서 제외되는 문제해결하기위한 
+    css 선택자와 속성값
+    */
     .wrap::after{
       content:"";
-      display:block;
+      display: block;
       clear:both;
     }
     .box{
-      width: 50px; height: 50px;
-      float: left;
+      width:50px; height: 50px;
+      float:left; /*일반흐름제외*/
     }
     .box:nth-child(odd){
       background-color: #f86;
     }
-    .box:nth-child(even){
+     .box:nth-child(even){
       background-color: #8f6;
     }
     .box1{
@@ -34,7 +37,7 @@
     .box2{
       /* transform: translateY(50px); */
       /* transform:scale(200%, 100%); */
-      /* transform-origin:right top; */
+      /* transform-origin:right top ; */
       transform: rotate(45deg);
       transform-origin: left bottom;
     }
@@ -42,18 +45,17 @@
       transform: skew(45deg, 0);
     }
     .box4{
-      transform: skew(0, 45deg);
+      transform: skew(0,45deg);
     }
-
   </style>
 </head>
 <body>
-  <div class="wrap">
-     <!-- .box.box*4>{box$} -->
-    <div class="box box">box1</div>
-    <div class="box box">box2</div>
-    <div class="box box">box3</div>
-    <div class="box box">box4</div>
-  </div>
+   <div class="wrap">
+    <!-- .box.box$*4>{box$} -->
+    <div class="box box1">box1</div>
+    <div class="box box2">box2</div>
+    <div class="box box3">box3</div>
+    <div class="box box4">box4</div>
+   </div>
 </body>
 </html>
