@@ -6,33 +6,35 @@
   <title>flex1</title>
   <link rel="stylesheet" href="../reset.css">
   <style>
-    .wrap{margin: 50px;}
+    .wrap{margin:50px}
     .container{
       /* width:auto; */
-      padding: 1rem;
+      padding:1rem;
       background-color: #fcc;
+
     }
     .item{
       border: 1px solid #000;
-      width: 100px;
+      width:100px;
     }
     .float .item{
-      float: left;
+      float:left;
     }
-    /* float item을 float컨테이너가 인식할 수 있게 문제 해결 clearfix */
+    /*float컨테이너에게  clearfix */
     .float::after{
       content: "";
       display: block;
-      clear: both;
+      clear:both;
     }
     .inline-block{
       font-size: 0;
     }
     .inline-block .item{
       display: inline-block;
-      font-size: 1rem;
+      font-size:1rem;
     }
-    .flex{display: flex;
+    .flex{
+      display: flex;
     }
     .flex .item{}
   </style>
