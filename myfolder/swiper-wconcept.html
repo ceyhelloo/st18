@@ -228,10 +228,10 @@
         <div class="swiper-button">
           <!-- If we need navigation buttons -->
           <div class="swiper-button-prev">
-            <img src="images/arrow_back_ios_48dp.png" alt="이전슬라이드로 이동">
+            <img src="/myfolder/images/arrow_back_ios_48dp_right.png" alt="이전슬라이드로 이동">
           </div>
           <div class="swiper-button-next">
-            <img src="images/arrow_back_ios_48dp.png" alt="다음슬라이드로 이동">
+            <img src="/myfolder/images/arrow_back_ios_48dp_right.png" alt="다음슬라이드로 이동">
           </div>
           <!-- play와pause 버튼이 올거예요 -->
            <!-- <div class="swiper-button-play-toggle is-play">
@@ -257,5 +257,44 @@
     <!-- Cafe24 환경: @js(url)구문으로 변경 가능  --> 
     <!-- 외부 JS 파일 참조: 재생/정지 토글 버튼 + Swiper 초기화 -->
     <script src="js/myscript.js" defer></script>
+    <script>
+      // Swiper 초기화 (autoplay 포함)
+      const swiper = new Swiper('.swiper1', {
+        // Optional parameters
+        direction: 'horizontal',
+        loop: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        // If we need pagination
+        pagination: {
+          el: '.swiper-pagination',
+          type: 'progressbar',
+        },
+        // Navigation arrows
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+
+      // 재생/정지 토글 버튼 기능
+      const playToggleBtn = document.querySelector('.swiper-button-play-toggle');
+
+      playToggleBtn.addEventListener('click', function() {
+        if (this.classList.contains('is-play')) {
+          // 현재 재생 중이면 정지
+          swiper.autoplay.stop();
+          this.classList.remove('is-play');
+          this.classList.add('is-pause');
+        } else {
+          // 현재 정지 중이면 재생
+          swiper.autoplay.start();
+          this.classList.remove('is-pause');
+          this.classList.add('is-play');
+        }
+      });
+    </script>
   </body>
 </html>

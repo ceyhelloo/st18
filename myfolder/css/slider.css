@@ -55,9 +55,10 @@
         /* 2- 문제2 해결 */
         max-width: 1420px;
         width: 92%;
+        /* cafe24 swiper css버전  */
         position: relative;
-        margin: auto;
-        
+        margin-left: auto;
+        margin-right: auto;
       }
       .visual-section .swiper-wrapper {
         /* 5 swiper 작동을 위해서는 gap을 지정하지 마시고 spaceBetween 속성을 지정*/
@@ -109,14 +110,14 @@
         display: inline-block;
         width:24px; height: 24px;
         position: relative;
-        left: auto; right: auto; top: auto; bottom: auto;
+        left:auto; right: auto;  bottom:auto;
       }
       .visual-section .swiper-button .swiper-button-prev,
       .visual-section .swiper-button .swiper-button-next{
         /* width:24px; height: 24px; */
          padding-left:10px;
-        padding-right: 10px;
-        background-image: none;
+         padding-right: 10px;
+         background-image: none;
       }
       .visual-section .swiper-button .swiper-button-prev::after{
         content: "";
@@ -139,25 +140,26 @@
         transform: rotate(180deg);
       }
 
-      .visual-section .swiper-button .swiper-button-prev{}
-      .visual-section .swiper-button .swiper-button-next{}
       .visual-section .swiper-button .swiper-button-play-toggle{}
       .visual-section .swiper-button .swiper-button-play-toggle>span{
         display: block;
-        box-sizing: border-box;
-        border: 1px solid #000;
+        padding-left:100%;
+        background-repeat: no-repeat;
+        background-size: contain;
+        overflow: hidden;
       }
       .visual-section .swiper-button .swiper-button-play-toggle .icon-pause{
         background-image: url(/myfolder/images/pause_48dp.png);
-        background-repeat: no-repeat;
       }
       .visual-section .swiper-button .swiper-button-play-toggle .icon-play{
         background-image: url(/myfolder/images/play_arrow_48dp.png);
-        background-repeat: no-repeat;
       }
-      .visual-section .swiper-button .swiper-button-play-toggle.is-pause .icon-pause{}
-      .visual-section .swiper-button .swiper-button-play-toggle.is-play .icon-play{
-        display: none;
-      }
-      
+      /* 
+      .swiper-button-play-toggle.is-play : pause 표시
+      .swiper-button-play-toggle.is-pause : play 표시
+      */
+       .visual-section .swiper-button .swiper-button-play-toggle.is-pause .icon-pause,
+       .visual-section .swiper-button .swiper-button-play-toggle.is-play  .icon-play{
+        display:none;
+       }
     
