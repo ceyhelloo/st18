@@ -11,6 +11,7 @@
       href="css/swiper.min.css"
     />
     <!-- swiperjs 스크립설치 -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="js/jquery.bpopup.min.js"></script>
     <style>
       /* 
@@ -240,8 +241,8 @@
         <!-- <div class="swiper-scrollbar"></div> -->
 
         <div class="swiper-button-play-toggle is-play">
-          <span id="icon-pause" class="icon-pause">pause</span>
-          <span id="icon-play" class="icon-pause">pause</span>
+          <span class="icon-pause"></span>
+          <span class="icon-play"></span>
         </div>
 
       </div>
@@ -267,6 +268,12 @@
   // swiper에서는 아이템간 여백을 marin-right로 지정
   spaceBetween: 20,
 
+  // Autoplay 설정
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+  },
+
   // If we need pagination
   pagination: {
     el: '.swiper-pagination',
@@ -290,5 +297,20 @@
   // },
 });
 </script>
+    <!-- 토글 버튼 기능 추가 -->
+    <script>
+      const toggleButton = document.querySelector('.swiper-button-play-toggle');
+      toggleButton.addEventListener('click', () => {
+        if (swiper1.autoplay.running) {
+          swiper1.autoplay.stop();
+          toggleButton.classList.remove('is-play');
+          toggleButton.classList.add('is-pause');
+        } else {
+          swiper1.autoplay.start();
+          toggleButton.classList.remove('is-pause');
+          toggleButton.classList.add('is-play');
+        }
+      });
+    </script>
   </body>
 </html>
