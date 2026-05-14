@@ -3,15 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>swiper연습2-wconcept</title>
+    <title>swiper-wconcept</title>
     <link rel="stylesheet" href="../reset.css" />
     <!-- swiperjs css -->
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+      href="css/swiper.min.css"
     />
     <!-- swiperjs 스크립설치 -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script src="js/swiper-bundle.min.js"></script>
     <style>
       /* 
     1. .swiper-slide 수평으로 나란하게
@@ -69,6 +69,10 @@
         /* 2- 문제2 해결 */
         max-width: 1420px;
         width: 92%;
+        /* cafe24 swiper css버전  */
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
       }
       .visual-section .swiper-wrapper {
         /* 5 swiper 작동을 위해서는 gap을 지정하지 마시고 spaceBetween 속성을 지정*/
@@ -120,12 +124,14 @@
         display: inline-block;
         width:24px; height: 24px;
         position: relative;
+        left:auto; right: auto; top:auto; bottom:auto;
       }
       .visual-section .swiper-button .swiper-button-prev,
       .visual-section .swiper-button .swiper-button-next{
         /* width:24px; height: 24px; */
          padding-left:10px;
-        padding-right: 10px;
+         padding-right: 10px;
+         background-image: none;
       }
       .visual-section .swiper-button .swiper-button-prev::after{
         content: "";
@@ -148,9 +154,28 @@
         transform: rotate(180deg);
       }
 
-      .visual-section .swiper-button .swiper-button-prev{}
-      .visual-section .swiper-button .swiper-button-next{}
-      
+      .visual-section .swiper-button .swiper-button-play-toggle{}
+      .visual-section .swiper-button .swiper-button-play-toggle>span{
+        display: block;
+        padding-left:100%;
+        background-repeat: no-repeat;
+        background-size: contain;
+        overflow: hidden;
+      }
+      .visual-section .swiper-button .swiper-button-play-toggle .icon-pause{
+        background-image: url(images/pause_48dp.png);
+      }
+      .visual-section .swiper-button .swiper-button-play-toggle .icon-play{
+        background-image: url(images/play_arrow_48dp.png);
+      }
+      /* 
+      .swiper-button-play-toggle.is-play : pause 표시
+      .swiper-button-play-toggle.is-pause : play 표시
+      */
+       .visual-section .swiper-button .swiper-button-play-toggle.is-pause .icon-pause,
+       .visual-section .swiper-button .swiper-button-play-toggle.is-play  .icon-play{
+        display:none;
+       }
     </style>
   </head>
   <body>
@@ -203,13 +228,22 @@
         <div class="swiper-button">
           <!-- If we need navigation buttons -->
           <div class="swiper-button-prev">
-            <img src="images/arrow_back_ios_48dp_right.png" alt="이전슬라이드로 이동">
+            <img src="/myfolder/images/arrow_back_ios_48dp_right.png" alt="이전슬라이드로 이동">
           </div>
           <div class="swiper-button-next">
-            <img src="images/arrow_back_ios_48dp_right.png" alt="다음슬라이드로 이동">
+            <img src="/myfolder/images/arrow_back_ios_48dp_right.png" alt="다음슬라이드로 이동">
           </div>
           <!-- play와pause 버튼이 올거예요 -->
-           <div>다음</div>
+           <!-- <div class="swiper-button-play-toggle is-play">
+            <span id="icon-pause" class="icon-pause">pause</span>
+            <span id="icon-play" class="icon-play">play_arrow</span>
+           </div> -->
+           <div class="swiper-button-play-toggle is-play">
+            <span id="icon-pause" class="icon-pause">pause</span>
+            <span id="icon-play" class="icon-play">play</span>
+           </div>
+
+
         </div>  <!-- //.control-button -->
 
         <!-- If we need scrollbar -->
@@ -219,47 +253,48 @@
       <!-- //.swiper -->
     </div>
     <!-- //.visual-section -->
-    <!-- swiper 실행 -->
+    <!-- Swiper 슬라이더 스크립트 외부 로드 -->
+    <!-- Cafe24 환경: @js(url)구문으로 변경 가능  --> 
+    <!-- 외부 JS 파일 참조: 재생/정지 토글 버튼 + Swiper 초기화 -->
+    <script src="js/myscript.js" defer></script>
     <script>
-  const swiper1 = new Swiper('.swiper1', {
-  // Optional parameters
-  direction: 'horizontal',
-  loop: true,
+      // Swiper 초기화 (autoplay 포함)
+      const swiper = new Swiper('.swiper1', {
+        // Optional parameters
+        direction: 'horizontal',
+        loop: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        // If we need pagination
+        pagination: {
+          el: '.swiper-pagination',
+          type: 'progressbar',
+        },
+        // Navigation arrows
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
 
-  // 현재슬라이드 swiper안에 가운데
-  // swipeer 시작할 때 1번 슬라이드 왼쪽에 마지막 슬라이드 표시
-  centeredSlides: true,
+      // 재생/정지 토글 버튼 기능
+      const playToggleBtn = document.querySelector('.swiper-button-play-toggle');
 
-  // swiper 안에 몇개 slide를 보여줄지 결정
-  // 3을 위해서 추가
-  slidesPerView: 3,
-
-  // 5여백
-  // swiper에서는 아이템간 여백을 marin-right로 지정
-  spaceBetween: 20,
-
-  // If we need pagination
-  pagination: {
-    el: '.swiper-pagination',
-    // 7 블릿대신 progressbar
-    type : 'progressbar',
-    clickable :true,
-  },
-
-  // Navigation arrows
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-    // 내가 입력 html img 태그 이미지 사용
-    addIcons:false,
-  },
-
-  // And if we need scrollbar
-  // progressbar일때 삭제
-  // scrollbar: {
-  //   el: '.swiper-scrollbar',
-  // },
-});
-</script>
+      playToggleBtn.addEventListener('click', function() {
+        if (this.classList.contains('is-play')) {
+          // 현재 재생 중이면 정지
+          swiper.autoplay.stop();
+          this.classList.remove('is-play');
+          this.classList.add('is-pause');
+        } else {
+          // 현재 정지 중이면 재생
+          swiper.autoplay.start();
+          this.classList.remove('is-pause');
+          this.classList.add('is-play');
+        }
+      });
+    </script>
   </body>
 </html>
