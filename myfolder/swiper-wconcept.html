@@ -8,10 +8,10 @@
     <!-- swiperjs css -->
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+      href="css/swiper.min.css"
     />
     <!-- swiperjs 스크립설치 -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script src="js/jquery.bpopup.min.js"></script>
     <style>
       /* 
     1. .swiper-slide 수평으로 나란하게
@@ -69,6 +69,9 @@
         /* 2- 문제2 해결 */
         max-width: 1420px;
         width: 92%;
+        position: relative;
+        margin: auto;
+        
       }
       .visual-section .swiper-wrapper {
         /* 5 swiper 작동을 위해서는 gap을 지정하지 마시고 spaceBetween 속성을 지정*/
@@ -120,12 +123,14 @@
         display: inline-block;
         width:24px; height: 24px;
         position: relative;
+        left: auto; right: auto; top: auto; bottom: auto;
       }
       .visual-section .swiper-button .swiper-button-prev,
       .visual-section .swiper-button .swiper-button-next{
         /* width:24px; height: 24px; */
          padding-left:10px;
         padding-right: 10px;
+        background-image: none;
       }
       .visual-section .swiper-button .swiper-button-prev::after{
         content: "";
@@ -150,6 +155,24 @@
 
       .visual-section .swiper-button .swiper-button-prev{}
       .visual-section .swiper-button .swiper-button-next{}
+      .visual-section .swiper-button .swiper-button-play-toggle{}
+      .visual-section .swiper-button .swiper-button-play-toggle>span{
+        display: block;
+        box-sizing: border-box;
+        border: 1px solid #000;
+      }
+      .visual-section .swiper-button .swiper-button-play-toggle .icon-pause{
+        background-image: url(images/pause_48dp_1F1F1F_FILL0_wght400_GRAD0_opsz48.png);
+        background-repeat: no-repeat;
+      }
+      .visual-section .swiper-button .swiper-button-play-toggle .icon-play{
+        background-image: url(images/play_arrow_48dp_1F1F1F_FILL0_wght400_GRAD0_opsz48.png);
+        background-repeat: no-repeat;
+      }
+      .visual-section .swiper-button .swiper-button-play-toggle.is-pause .icon-pause{}
+      .visual-section .swiper-button .swiper-button-play-toggle.is-play .icon-play{
+        display: none;
+      }
       
     </style>
   </head>
@@ -215,6 +238,12 @@
         <!-- If we need scrollbar -->
          <!-- pagination type:progressbar 지정했기때문에 스크롤삭제 -->
         <!-- <div class="swiper-scrollbar"></div> -->
+
+        <div class="swiper-button-play-toggle is-play">
+          <span id="icon-pause" class="icon-pause">pause</span>
+          <span id="icon-play" class="icon-pause">pause</span>
+        </div>
+
       </div>
       <!-- //.swiper -->
     </div>
