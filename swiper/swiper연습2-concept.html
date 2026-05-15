@@ -1,0 +1,21 @@
+document.addEventListener('DOMContentLoaded', function () {
+  const accordionItems = document.querySelectorAll('.accordion-wrap .accordion-item');
+  if (!accordionItems.length) return;
+
+  accordionItems.forEach((item) => {
+    const title = item.querySelector('.accordion-title');
+    if (!title) return;
+
+    title.addEventListener('click', function () {
+      const isActive = item.classList.contains('active');
+
+      accordionItems.forEach((otherItem) => {
+        otherItem.classList.remove('active');
+      });
+
+      if (!isActive) {
+        item.classList.add('active');
+      }
+    });
+  });
+});
