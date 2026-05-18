@@ -37,6 +37,11 @@
   --section-main-banner-padding:16px;
 }
 
+/* border */
+:root{
+--border:1px solid #000;
+}
+
   
 
 

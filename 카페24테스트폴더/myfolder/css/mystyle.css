@@ -1,0 +1,16 @@
+/* 테스트후 삭제 */
+@import url(ub-variables.css);
+.card{
+  background-color: #cff;
+  box-sizing: border-box;
+  border: var(--border);
+  opacity: 0.5;
+  
+}
+.dan-section .flex{
+  background-color: #f00;
+  box-sizing: border-box;
+  border: 1px solid #000;
+}
+
+/* 공통 */
