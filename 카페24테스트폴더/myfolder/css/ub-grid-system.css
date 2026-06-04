@@ -17,9 +17,9 @@
 /* 섹션 너비 제한용 */
 .section {
   width: var(--section-width);
-  /* margin: auto; */
-  margin-left:  auto;
-  margin-right:  auto;
+  /* margin:0 auto; */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* 12컬럼 그리드 */
@@ -313,4 +313,5 @@
   .justify-sm-center { justify-content: center; }
   .justify-sm-between { justify-content: space-between; }
 }
+
 
